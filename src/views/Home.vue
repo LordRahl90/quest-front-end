@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <h1>Hello Home</h1>
+    <h1>Hello Home {{ message }}</h1>
+    <button @click="changeMessage">Click Me</button>
   </div>
 </template>
 
@@ -9,6 +10,16 @@
 
 export default {
   name: 'home',
+  data() {
+    return {
+      message: 'Testing',
+    };
+  },
+  methods: {
+    changeMessage() {
+      console.log(this.message);
+    },
+  },
   components: {
   },
 };
