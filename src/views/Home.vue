@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <h1>Hello Home {{ message }}</h1>
-    <button @click="changeMessage">Click Me</button>
+    <button @click="changeMessage">
+      Click Me
+    </button>
   </div>
 </template>
 
@@ -9,7 +11,8 @@
 // @ is an alias to /src
 
 export default {
-  name: 'home',
+  name: 'Home',
+  components: {},
   data() {
     return {
       message: 'Testing',
@@ -19,8 +22,6 @@ export default {
     changeMessage() {
       console.log(this.message);
     },
-  },
-  components: {
   },
 };
 </script>

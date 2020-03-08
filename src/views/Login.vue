@@ -12,13 +12,16 @@
               <v-card-text>
                 <v-form>
                   <v-text-field
-                  v-model=user.email
-                  label="Login" name="email"
-                  prepend-icon="person" type="text" />
+                    v-model="user.email"
+                    label="Login"
+                    name="email"
+                    prepend-icon="person"
+                    type="text"
+                  />
 
                   <v-text-field
-                    v-model=user.password
                     id="password"
+                    v-model="user.password"
                     label="Password"
                     name="password"
                     prepend-icon="lock"
@@ -28,7 +31,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
-                <v-btn color="primary" @click="authenticate" >Login</v-btn>
+                <v-btn color="primary" @click="authenticate">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -38,8 +41,13 @@
   </v-app>
 </template>
 <script>
+import axios from 'axios';
+import { mapActions, mapGetters } from 'vuex';
+import { BACKEND } from '../constants';
+
 export default {
   name: 'Login',
+  components: {},
   data() {
     return {
       message: 'hello',
@@ -50,11 +58,28 @@ export default {
     };
   },
   methods: {
-    authenticate() {
+    ...mapActions(['updateUser', 'updateToken']),
+    async authenticate() {
       const { email, password } = this.user;
-      console.log(`${email} ${password}`);
+      if (email === '' || password === '') {
+        return;
+      }
+
+      const url = `${BACKEND}/student/login`;
+      try {
+        const response = await axios.post(url, { email, password });
+        const { user, token } = response.data.data;
+        this.$store.dispatch('updateUser', user);
+        this.$store.dispatch('updateToken', token);
+
+        this.$router.push('/dashboard');
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
-  components: {},
+  computed: {
+    ...mapGetters({ token: 'getToken' }),
+  },
 };
 </script>

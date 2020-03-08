@@ -11,14 +11,14 @@
 <script>
 export default {
   name: 'TextCard',
-  data() {
-    return {};
-  },
   props: {
     title: String,
     subtitle: String,
     content: String,
     footer: String,
+  },
+  data() {
+    return {};
   },
 };
 </script>
