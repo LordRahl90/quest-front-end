@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" absolute class="mt-12" app v-if="token!==''">
+    <v-navigation-drawer v-model="drawer" absolute class="mt-12" app v-if="token !== ''">
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title">{{ user.full_name }}</v-list-item-title>
@@ -39,11 +39,11 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar app color="primary" dark>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" v-if="token!==''" />
+    <v-app-bar app color="primary" dark v-if="token">
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>Quest Tutors</v-toolbar-title>
       <v-spacer />
-      <v-btn text v-if="token!==''">Sign Out</v-btn>
+      <v-btn text v-if="token !== ''">Sign Out</v-btn>
     </v-app-bar>
     <v-content>
       <router-view />
@@ -70,3 +70,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.t-center {
+  text-align: center !important;
+}
+</style>
