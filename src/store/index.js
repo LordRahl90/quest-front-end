@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     user: {},
-    token: 'duyfvdifvusfdvfiuvadiufvfvddiufviUVIUViuviuVFIUviuviuVFIUvifvidufuvIUviuvIUViuviuv',
+    token: '',
     info: {
       subject: '',
       duration: 0,

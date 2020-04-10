@@ -1,20 +1,27 @@
 <template>
   <v-app id="inspire">
     <v-content>
-      <v-container class="fill-height" fluid>
-        <v-row align="center" justify="center">
+      <v-container class="fill-height" fluid style="padding: 0; background: #fff">
+        <v-row align="center" justify="">
           <v-col cols="6" sm="8" md="6" class="page">
-            <img src="../assets/book.svg" alt="" style="width: 70%; margin: 0 15%" />
+            <div class="heading">
+              Welcome to Quest-FE
+            </div>
+            <img src="../assets/book.svg" alt="" style="width: 50%; margin: -60px 15% 10px 15%" />
+            <img src="../assets/study.svg" alt="" style="width: 50%; margin: 0 0 0 45%" />
           </v-col>
-          <v-col cols="12" sm="8" md="6">
+          <v-col cols="12" sm="8" md="6" class="page_">
             <div class="bordered">
-              <v-toolbar color="primary" dark flat>
+              <!-- <v-toolbar color="primary" dark flat>
                 <v-toolbar-title>Welcome to Quest-FE</v-toolbar-title>
                 <v-spacer />
-              </v-toolbar>
+              </v-toolbar> -->
+              <p class="login-header">
+                Login
+              </p>
               <v-card-text class="p20">
                 <v-form>
-                  <v-text-field v-model="user.email" label="Login" name="email" type="text" />
+                  <v-text-field v-model="user.email" label="Email" name="email" type="text" />
 
                   <v-text-field
                     id="password"
@@ -90,17 +97,42 @@ export default {
   padding: 20px !important;
 }
 .page {
-  background-color: #fff;
   height: 100vh;
   padding-top: 200px;
+  width: 100%;
   // background-image: url('../assets/book.svg');
   // background-size: 30%;
   // background-position-x: 97%;
   // background-position-y: 90%;
+  .heading {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    width: 50%;
+    text-align: center;
+    font-size: 24px;
+    color: #383838;
+  }
 }
-.bordered {
-  background-color: #fff;
-  border: 1px solid #eee;
-  margin: 0 100px;
+.page_ {
+  height: 100vh;
+  background-color: #fafafa;
+  width: 100%;
+
+  .bordered {
+    border: 1px solid #eee;
+    margin: 0 100px;
+    background-color: #fff;
+    transform: translateY(50%);
+    .login-header {
+      width: 100%;
+      padding: 15px;
+      color: #383838;
+      font-size: 20px;
+      font-weight: 400;
+      border-bottom: 0.3px solid #eee;
+      // background-color: #008cff50;
+    }
+  }
 }
 </style>

@@ -7,17 +7,6 @@
         <div class="my-widget bg-1">
           <p class="count">1401</p>
           <p class="text">visitors</p>
-          <v-icon
-            style="    font-size: 100px;
-    display: inline;
-    color: #fff;
-    position: relative;
-    top: -47px;
-    width: 40px;
-    height: 40px;
-    z-index: 100000;"
-            >adobe-acrobat</v-icon
-          >
         </div>
       </v-flex>
       <v-flex d-flex lg3 sm6 xs12>
@@ -134,6 +123,78 @@
                 </span>
               </div>
             </li>
+            <li>
+              <div class="position">1</div>
+              <div class="img">
+                <img
+                  src="
+                  https://api.adorable.io/avatars/285/abott@adorable.png"
+                  alt=""
+                />
+              </div>
+              <div class="user">
+                <span class="name">
+                  Sam Jones
+                </span>
+                <span class="score">
+                  12,321
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="position">1</div>
+              <div class="img">
+                <img
+                  src="
+                  https://api.adorable.io/avatars/285/sam@adorable.png"
+                  alt=""
+                />
+              </div>
+              <div class="user">
+                <span class="name">
+                  Sam Jones
+                </span>
+                <span class="score">
+                  12,321
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="position">1</div>
+              <div class="img">
+                <img
+                  src="
+                  https://api.adorable.io/avatars/285/mike@adorable.png"
+                  alt=""
+                />
+              </div>
+              <div class="user">
+                <span class="name">
+                  Sam Jones
+                </span>
+                <span class="score">
+                  12,321
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="position">1</div>
+              <div class="img">
+                <img
+                  src="
+                  https://api.adorable.io/avatars/285/jane@adorable.png"
+                  alt=""
+                />
+              </div>
+              <div class="user">
+                <span class="name">
+                  Sam Jones
+                </span>
+                <span class="score">
+                  12,321
+                </span>
+              </div>
+            </li>
           </ul>
         </div>
       </v-flex>
@@ -147,7 +208,79 @@
               <div class="img">
                 <img
                   src="
-                  https://api.adorable.io/avatars/285/john@adorable.png"
+                  https://api.adorable.io/avatars/285/mike@adorable.png"
+                  alt=""
+                />
+              </div>
+              <div class="user">
+                <span class="name">
+                  Sam Jones
+                </span>
+                <span class="score">
+                  12,321
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="position">1</div>
+              <div class="img">
+                <img
+                  src="
+                  https://api.adorable.io/avatars/285/james@adorable.png"
+                  alt=""
+                />
+              </div>
+              <div class="user">
+                <span class="name">
+                  Sam Jones
+                </span>
+                <span class="score">
+                  12,321
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="position">1</div>
+              <div class="img">
+                <img
+                  src="
+                  https://api.adorable.io/avatars/285/sally@adorable.png"
+                  alt=""
+                />
+              </div>
+              <div class="user">
+                <span class="name">
+                  Sam Jones
+                </span>
+                <span class="score">
+                  12,321
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="position">1</div>
+              <div class="img">
+                <img
+                  src="
+                  https://api.adorable.io/avatars/285/jane@adorable.png"
+                  alt=""
+                />
+              </div>
+              <div class="user">
+                <span class="name">
+                  Sam Jones
+                </span>
+                <span class="score">
+                  12,321
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="position">1</div>
+              <div class="img">
+                <img
+                  src="
+                  https://api.adorable.io/avatars/285/malik@adorable.png"
                   alt=""
                 />
               </div>

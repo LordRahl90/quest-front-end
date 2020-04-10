@@ -71,8 +71,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .t-center {
   text-align: center !important;
+}
+.v-btn {
+  letter-spacing: unset !important;
 }
 </style>
