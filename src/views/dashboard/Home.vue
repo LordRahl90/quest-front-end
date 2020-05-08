@@ -6,25 +6,25 @@
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-1">
           <p class="count">1401</p>
-          <p class="text">visitors</p>
+          <p class="text">Ranking</p>
         </div>
       </a-col>
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-2">
-          <p class="count">1401</p>
-          <p class="text">visitors</p>
+          <p class="count">&#x20A6;1,401</p>
+          <p class="text">Amount Paid</p>
         </div>
       </a-col>
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-3">
           <p class="count">1401</p>
-          <p class="text">visitors</p>
+          <p class="text">Total Tests</p>
         </div>
       </a-col>
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-4">
-          <p class="count">1401</p>
-          <p class="text">visitors</p>
+          <p class="count">20%</p>
+          <p class="text">Pass Percentage</p>
         </div>
       </a-col>
     </a-row>
