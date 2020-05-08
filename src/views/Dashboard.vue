@@ -5,7 +5,7 @@
       <div style="height: 64px; background: #eee; line-height: 64px; text-align: center">
         Quest FE
       </div>
-      <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
+      <a-menu v-if="!examStarted" theme="dark" mode="inline" :default-selected-keys="['1']">
         <a-menu-item key="1">
           <router-link to="/dashboard">
             <a-icon type="dashboard" />
@@ -28,7 +28,16 @@
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
-        <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="() => (collapsed = !collapsed)" />
+        <a-icon
+          v-if="!examStarted"
+          class="trigger"
+          :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+          @click="() => (collapsed = !collapsed)"
+        />
+
+        <span style="color: red; float: right; margin-right: 30px; cursor: pointer" @click="logout()" v-if="!examStarted">
+          <a-icon type="logout" /> Logout
+        </span>
       </a-layout-header>
       <a-layout-content :style="{ padding: '24px', minHeight: '100vh' }">
         <router-view />
@@ -39,16 +48,23 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  // import Widget from '@/components/Widget.vue';
+  import eventbus from '../eventbus'
 
   export default {
     name: 'Dashboard',
     data() {
       return {
         collapsed: false,
+        examStarted: false,
       }
     },
-    methods: {},
+    methods: {
+      logout() {
+        sessionStorage.clear()
+        localStorage.clear()
+        this.$router.push('/')
+      },
+    },
     computed: {
       ...mapGetters({
         token: 'getToken',
@@ -58,6 +74,16 @@
       if (this.token === '') {
         this.$router.push('/')
       }
+    },
+    mounted() {
+      eventbus.$on('exam_started', () => {
+        this.collapsed = true
+        this.examStarted = true
+      })
+      eventbus.$on('exam_ended', () => {
+        this.collapsed = false
+        this.examStarted = false
+      })
     },
   }
 </script>

@@ -7,10 +7,14 @@
       <a-col :sm="32" :lg="12">
         <img src="../../assets/winner.svg" class="trophy" alt="" />
         <div class="shadow">
-          <p>Your score</p>
-          <h1>80%</h1>
-
-          <a-button style="float: right; margin-top: -20px;" type="primary">Restart</a-button>
+          <p>Your score <span style="float: right">80%</span></p>
+          <p>Duration <span style="float: right">10 minutes</span></p>
+          <p>Total questions <span style="float: right">10</span></p>
+          <p>Passed <span style="float: right">8</span></p>
+          <p>Failed <span style="float: right">2</span></p>
+          <p>Current Subject Rank <span style="float: right">1,234</span></p>
+          <p>Overall Rank <span style="float: right">2,032</span></p>
+          <a-button style="float: right; margin-top: -10px;" type="primary" @click="restart">Restart</a-button>
         </div>
       </a-col>
     </a-row>
@@ -27,6 +31,11 @@
         user: 'getUser',
       }),
     },
+    methods: {
+      restart() {
+        this.$router.push('/dashboard/cbt')
+      },
+    },
     mounted() {
       console.log(this.user)
     },
@@ -34,19 +43,20 @@
 </script>
 <style lang="scss" scoped>
   .profile {
-    padding-top: 30px;
+    padding-top: 12px;
     .trophy {
-      width: 80%;
-      margin: 0 10%;
+      width: 40%;
+      margin: 0 30%;
     }
     .shadow {
       background-color: #fff;
-      padding: 30px;
+      padding: 30px 20px;
       margin: 0 30px;
       border-radius: 5px;
+      border-top: 10px solid #000;
       p {
         border-bottom: 1px solid #eee;
-        padding-bottom: 12px;
+        padding-bottom: 6px;
         font-weight: 600;
         font-size: 20px;
       }

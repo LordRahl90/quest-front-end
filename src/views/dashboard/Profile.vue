@@ -2,9 +2,9 @@
 
 <template>
   <div class="profile">
-    <a-row :gutter="10">
-      <a-col :sm="32" :lg="5"> </a-col>
-      <a-col :sm="32" :lg="14">
+    <a-row :gutter="50">
+      <a-col :sm="32" :lg="2"></a-col>
+      <a-col :sm="32" :lg="10">
         <div class="avatar shadow">
           <img src="https://api.adorable.io/avatars/285/john@adorable.png" alt="" />
         </div>
@@ -27,6 +27,32 @@
           <h3>
             Guardian Phone No.: <span>{{ user.guardian_phone }}</span>
           </h3>
+        </div>
+      </a-col>
+      <a-col :sm="32" :lg="10">
+        <h1>Last 10 games</h1>
+        <div class="leader-board">
+          <ul>
+            <li class="shadow" v-for="user in 10" :key="user">
+              <div class="position">1</div>
+              <div class="img">
+                <img
+                  src="
+                  https://api.adorable.io/avatars/285/john@adorable.png"
+                  alt
+                />
+              </div>
+              <div class="user">
+                <span class="name">
+                  Mathematics
+                  <span class="time">02:25 PM</span>
+                </span>
+                <span class="btm">
+                  <span class="score" style="float: left; top: 1px">12,321</span>
+                </span>
+              </div>
+            </li>
+          </ul>
         </div>
       </a-col>
     </a-row>

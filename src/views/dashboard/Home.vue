@@ -29,8 +29,8 @@
       </a-col>
     </a-row>
 
-    <a-row :gutter="10" style="padding-top: 40px">
-      <a-col :lg="6" :sm="32" :xs="32" class="leader-wrap">
+    <a-row :gutter="20" style="padding-top: 40px">
+      <a-col :lg="8" :sm="32" :xs="32" class="leader-wrap">
         <h1>Today's Schedule</h1>
         <a-timeline mode="alternate">
           <a-timeline-item color="green">
@@ -98,7 +98,7 @@
           </a-timeline-item>
         </a-timeline>
       </a-col>
-      <a-col :lg="9" :sm="32" :xs="32" class="leader-wrap">
+      <a-col :lg="7" :sm="32" :xs="32" class="leader-wrap">
         <h1>Leader Board</h1>
         <div class="leader-board">
           <ul>
@@ -262,115 +262,38 @@
   </div>
 </template>
 <script>
-export default {};
+  export default {}
 </script>
 <style lang="scss" scoped>
-.home {
-  .leader-wrap {
-    padding: 20px;
-    // border: 1px solid #eee;
-    // background: #fff;
-    h1 {
-      font-size: 20px;
-      font-weight: 300;
-      color: rgb(138, 138, 138);
-    }
-    .leader-board {
-      ul {
-        padding: 0;
-        li {
-          height: 80px;
-          list-style-type: none;
-          // padding: 5px;
-          background-color: #fff;
-          margin-bottom: 12px;
-          border-radius: 5px;
-          width: 98%;
-          .position {
-            width: 10%;
-            float: left;
-            font-size: 20px;
-            margin-top: 23px;
-            text-align: center;
-            // border: 1px solid #eee;
-            // border-radius: 50%;
-          }
-          .img {
-            width: 60px;
-            height: 60px;
-            margin-top: 10px;
-            border-radius: 5px;
-            overflow: hidden;
-            float: left;
-            img {
-              width: 100%;
-            }
-          }
-          .user {
-            float: left;
-            height: 100%;
-            padding-left: 20px;
-            width: calc(90% - 75px);
-            .name {
-              display: block;
-              height: 34%;
-              font-size: 18px;
-              margin-top: 12px;
-              font-weight: 600;
-              .time {
-                float: right;
-                font-size: 12px;
-                font-weight: 300;
-              }
-            }
-            .btm {
-              display: block;
-              height: 50%;
-              .sub {
-                font-size: 16px;
-                position: relative;
-                top: 5px;
-              }
-              .score {
-                font-size: 24px;
-                float: right;
-                // font-weight: 500;
-                position: relative;
-                top: -6px;
-              }
-            }
-          }
-        }
-        .subject {
-          text-align: center;
-          height: 50px;
-          line-height: 50px;
-          color: #fff;
-          font-size: 14px;
-        }
-      }
-    }
-    .timeline {
-      height: 80px;
-      padding: 12px;
-      width: 95%;
-      border-radius: 6px;
-      color: #fff;
-      p {
-        font-size: 16px;
-        font-weight: 400;
-        span {
-          float: right;
-          font-size: 12px;
-        }
-      }
-      .topp {
+  .home {
+    .leader-wrap {
+      padding: 20px;
+      h1 {
         font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 0;
-        margin-bottom: 10px;
+        font-weight: 300;
+        color: rgb(138, 138, 138);
+      }
+      .timeline {
+        height: 60px;
+        padding: 8px;
+        width: 95%;
+        border-radius: 6px;
+        color: #fff;
+        text-align: left;
+        p {
+          font-size: 12px;
+          font-weight: 400;
+          span {
+            float: right;
+            font-size: 12px;
+          }
+        }
+        .topp {
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
       }
     }
   }
-}
 </style>
