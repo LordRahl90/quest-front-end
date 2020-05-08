@@ -31,48 +31,69 @@
 
     <a-row :gutter="10" style="padding-top: 40px">
       <a-col :lg="6" :sm="32" :xs="32" class="leader-wrap">
-        <h1>Subjects</h1>
-        <a-timeline>
+        <h1>Today's Schedule</h1>
+        <a-timeline mode="alternate">
           <a-timeline-item color="green">
             <div class="shadow timeline bw bg-4">
               <p class="topp">Mathematics</p>
-              <p>Mr Sam <span>2:00 hours</span></p>
+              <p>
+                Mr Sam Ojeniyi
+                <span>2:00 hours</span>
+              </p>
             </div>
           </a-timeline-item>
           <a-timeline-item color="gray">
             <div class="shadow timeline bw bg-11">
               <p class="topp">Mathematics</p>
-              <p>Mr Sam <span>2:00 hours</span></p>
+              <p>
+                Mr Sam
+                <span>2:00 hours</span>
+              </p>
             </div>
           </a-timeline-item>
           <a-timeline-item color="gray">
             <div class="shadow timeline bw bg-3">
               <p class="topp">Mathematics</p>
-              <p>Mr Sam <span>2:00 hours</span></p>
+              <p>
+                Mr Sam
+                <span>2:00 hours</span>
+              </p>
             </div>
           </a-timeline-item>
           <a-timeline-item color="gray">
             <div class="shadow timeline bw bg-1">
               <p class="topp">Mathematics</p>
-              <p>Mr Sam <span>2:00 hours</span></p>
+              <p>
+                Mr Sam
+                <span>2:00 hours</span>
+              </p>
             </div>
           </a-timeline-item>
           <a-timeline-item color="gray">
             <div class="shadow timeline bw bg-3">
               <p class="topp">Mathematics</p>
-              <p>Mr Sam <span>2:00 hours</span></p>
+              <p>
+                Mr Sam
+                <span>2:00 hours</span>
+              </p>
             </div>
           </a-timeline-item>
           <a-timeline-item color="gray">
             <div class="shadow timeline bw bg-4">
               <p class="topp">Mathematics</p>
-              <p>Mr Sam <span>2:00 hours</span></p>
+              <p>
+                Mr Sam
+                <span>2:00 hours</span>
+              </p>
             </div>
           </a-timeline-item>
           <a-timeline-item color="gray">
             <div class="shadow timeline bw bg-2">
               <p class="topp">Mathematics</p>
-              <p>Mr Sam <span>2:00 hours</span></p>
+              <p>
+                Mr Sam
+                <span>2:00 hours</span>
+              </p>
             </div>
           </a-timeline-item>
         </a-timeline>
@@ -87,16 +108,12 @@
                 <img
                   src="
                   https://api.adorable.io/avatars/285/john@adorable.png"
-                  alt=""
+                  alt
                 />
               </div>
               <div class="user">
-                <span class="name">
-                  Sam Jones
-                </span>
-                <span class="score">
-                  12,321
-                </span>
+                <span class="name">Sam Jones</span>
+                <span class="score">12,321</span>
               </div>
             </li>
             <li class="shadow">
@@ -105,16 +122,12 @@
                 <img
                   src="
                   https://api.adorable.io/avatars/285/abott@adorable.png"
-                  alt=""
+                  alt
                 />
               </div>
               <div class="user">
-                <span class="name">
-                  Sam Jones
-                </span>
-                <span class="score">
-                  12,321
-                </span>
+                <span class="name">Sam Jones</span>
+                <span class="score">12,321</span>
               </div>
             </li>
             <li class="shadow">
@@ -123,16 +136,12 @@
                 <img
                   src="
                   https://api.adorable.io/avatars/285/sam@adorable.png"
-                  alt=""
+                  alt
                 />
               </div>
               <div class="user">
-                <span class="name">
-                  Sam Jones
-                </span>
-                <span class="score">
-                  12,321
-                </span>
+                <span class="name">Sam Jones</span>
+                <span class="score">12,321</span>
               </div>
             </li>
             <li class="shadow">
@@ -141,16 +150,12 @@
                 <img
                   src="
                   https://api.adorable.io/avatars/285/mike@adorable.png"
-                  alt=""
+                  alt
                 />
               </div>
               <div class="user">
-                <span class="name">
-                  Sam Jones
-                </span>
-                <span class="score">
-                  12,321
-                </span>
+                <span class="name">Sam Jones</span>
+                <span class="score">12,321</span>
               </div>
             </li>
             <li class="shadow">
@@ -159,16 +164,12 @@
                 <img
                   src="
                   https://api.adorable.io/avatars/285/jane@adorable.png"
-                  alt=""
+                  alt
                 />
               </div>
               <div class="user">
-                <span class="name">
-                  Sam Jones
-                </span>
-                <span class="score">
-                  12,321
-                </span>
+                <span class="name">Sam Jones</span>
+                <span class="score">12,321</span>
               </div>
             </li>
             <li class="shadow">
@@ -177,16 +178,12 @@
                 <img
                   src="
                   https://api.adorable.io/avatars/285/abott@adorable.png"
-                  alt=""
+                  alt
                 />
               </div>
               <div class="user">
-                <span class="name">
-                  Sam Jones
-                </span>
-                <span class="score">
-                  12,321
-                </span>
+                <span class="name">Sam Jones</span>
+                <span class="score">12,321</span>
               </div>
             </li>
             <li class="shadow">
@@ -195,16 +192,12 @@
                 <img
                   src="
                   https://api.adorable.io/avatars/285/sam@adorable.png"
-                  alt=""
+                  alt
                 />
               </div>
               <div class="user">
-                <span class="name">
-                  Sam Jones
-                </span>
-                <span class="score">
-                  12,321
-                </span>
+                <span class="name">Sam Jones</span>
+                <span class="score">12,321</span>
               </div>
             </li>
             <li class="shadow">
@@ -213,16 +206,12 @@
                 <img
                   src="
                   https://api.adorable.io/avatars/285/mike@adorable.png"
-                  alt=""
+                  alt
                 />
               </div>
               <div class="user">
-                <span class="name">
-                  Sam Jones
-                </span>
-                <span class="score">
-                  12,321
-                </span>
+                <span class="name">Sam Jones</span>
+                <span class="score">12,321</span>
               </div>
             </li>
             <li class="shadow">
@@ -231,16 +220,12 @@
                 <img
                   src="
                   https://api.adorable.io/avatars/285/jane@adorable.png"
-                  alt=""
+                  alt
                 />
               </div>
               <div class="user">
-                <span class="name">
-                  Sam Jones
-                </span>
-                <span class="score">
-                  12,321
-                </span>
+                <span class="name">Sam Jones</span>
+                <span class="score">12,321</span>
               </div>
             </li>
           </ul>
@@ -256,15 +241,16 @@
                 <img
                   src="
                   https://api.adorable.io/avatars/285/john@adorable.png"
-                  alt=""
+                  alt
                 />
               </div>
               <div class="user">
-                <span class="name"> Sam Jones <span class="time">02:25 PM</span> </span>
+                <span class="name">
+                  Sam Jones
+                  <span class="time">02:25 PM</span>
+                </span>
                 <span class="btm">
-                  <span class="sub">
-                    Mathematics
-                  </span>
+                  <span class="sub">Mathematics</span>
                   <span class="score">12,321</span>
                 </span>
               </div>
@@ -276,115 +262,115 @@
   </div>
 </template>
 <script>
-  export default {}
+export default {};
 </script>
 <style lang="scss" scoped>
-  .home {
-    .leader-wrap {
-      padding: 20px;
-      // border: 1px solid #eee;
-      // background: #fff;
-      h1 {
-        font-size: 20px;
-        font-weight: 300;
-        color: rgb(138, 138, 138);
-      }
-      .leader-board {
-        ul {
-          padding: 0;
-          li {
-            height: 80px;
-            list-style-type: none;
-            // padding: 5px;
-            background-color: #fff;
-            margin-bottom: 12px;
-            border-radius: 5px;
-            width: 98%;
-            .position {
-              width: 10%;
-              float: left;
-              font-size: 20px;
-              margin-top: 23px;
-              text-align: center;
-              // border: 1px solid #eee;
-              // border-radius: 50%;
-            }
-            .img {
-              width: 60px;
-              height: 60px;
-              margin-top: 10px;
-              border-radius: 5px;
-              overflow: hidden;
-              float: left;
-              img {
-                width: 100%;
-              }
-            }
-            .user {
-              float: left;
-              height: 100%;
-              padding-left: 20px;
-              width: calc(90% - 75px);
-              .name {
-                display: block;
-                height: 34%;
-                font-size: 18px;
-                margin-top: 12px;
-                font-weight: 600;
-                .time {
-                  float: right;
-                  font-size: 12px;
-                  font-weight: 300;
-                }
-              }
-              .btm {
-                display: block;
-                height: 50%;
-                .sub {
-                  font-size: 16px;
-                  position: relative;
-                  top: 5px;
-                }
-                .score {
-                  font-size: 24px;
-                  float: right;
-                  // font-weight: 500;
-                  position: relative;
-                  top: -6px;
-                }
-              }
-            }
-          }
-          .subject {
+.home {
+  .leader-wrap {
+    padding: 20px;
+    // border: 1px solid #eee;
+    // background: #fff;
+    h1 {
+      font-size: 20px;
+      font-weight: 300;
+      color: rgb(138, 138, 138);
+    }
+    .leader-board {
+      ul {
+        padding: 0;
+        li {
+          height: 80px;
+          list-style-type: none;
+          // padding: 5px;
+          background-color: #fff;
+          margin-bottom: 12px;
+          border-radius: 5px;
+          width: 98%;
+          .position {
+            width: 10%;
+            float: left;
+            font-size: 20px;
+            margin-top: 23px;
             text-align: center;
-            height: 50px;
-            line-height: 50px;
-            color: #fff;
-            font-size: 14px;
+            // border: 1px solid #eee;
+            // border-radius: 50%;
+          }
+          .img {
+            width: 60px;
+            height: 60px;
+            margin-top: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            float: left;
+            img {
+              width: 100%;
+            }
+          }
+          .user {
+            float: left;
+            height: 100%;
+            padding-left: 20px;
+            width: calc(90% - 75px);
+            .name {
+              display: block;
+              height: 34%;
+              font-size: 18px;
+              margin-top: 12px;
+              font-weight: 600;
+              .time {
+                float: right;
+                font-size: 12px;
+                font-weight: 300;
+              }
+            }
+            .btm {
+              display: block;
+              height: 50%;
+              .sub {
+                font-size: 16px;
+                position: relative;
+                top: 5px;
+              }
+              .score {
+                font-size: 24px;
+                float: right;
+                // font-weight: 500;
+                position: relative;
+                top: -6px;
+              }
+            }
           }
         }
-      }
-      .timeline {
-        height: 80px;
-        padding: 12px;
-        width: 95%;
-        border-radius: 6px;
-        color: #fff;
-        p {
-          font-size: 16px;
-          font-weight: 400;
-          span {
-            float: right;
-            font-size: 12px;
-          }
-        }
-        .topp {
-          font-size: 20px;
-          font-weight: 600;
-          margin-bottom: 0;
-          margin-bottom: 10px;
+        .subject {
+          text-align: center;
+          height: 50px;
+          line-height: 50px;
+          color: #fff;
+          font-size: 14px;
         }
       }
     }
+    .timeline {
+      height: 80px;
+      padding: 12px;
+      width: 95%;
+      border-radius: 6px;
+      color: #fff;
+      p {
+        font-size: 16px;
+        font-weight: 400;
+        span {
+          float: right;
+          font-size: 12px;
+        }
+      }
+      .topp {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 0;
+        margin-bottom: 10px;
+      }
+    }
   }
+}
 </style>
