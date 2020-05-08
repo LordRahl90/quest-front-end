@@ -173,17 +173,13 @@
       <div style="margin: 2%; padding: 2%;">
         <a-tabs>
           <a-tab-pane v-for="(n,i) in questions" :key="i" :tab="`Question ${i+1}`">
-            <question :question="n" :number="i" />
+            <question :question="n" :number="i+1" />
           </a-tab-pane>
         </a-tabs>
       </div>
 
       <div class="steps-action">
-        <a-button
-          style="margin-left: 8px; float: right"
-          type="primary"
-          @click="$message.success('Processing complete!')"
-        >Done</a-button>
+        <a-button style="margin-left: 8px; float: right" type="primary" @click="submit">Done</a-button>
       </div>
     </div>
   </div>
@@ -243,7 +239,7 @@ export default {
       return this.questions[this.question];
     },
     newTime() {
-      const { duration } = this.exam.duration || 30;
+      const { duration } = this.exam.duration || 10;
       const end = moment()
         .add(duration, "minutes")
         .format("Y-MM-DD H:mm:ss");
