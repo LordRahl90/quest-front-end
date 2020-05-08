@@ -57,6 +57,7 @@ export default new Vuex.Store({
   },
   actions: {
     setCBTInfo(context, payload) {
+<<<<<<< HEAD
       context.commit('setCBTInfo', payload)
     },
     updateResponse(context, payload) {
@@ -81,3 +82,28 @@ export default new Vuex.Store({
   modules: {},
   plugins: [vuexLocal.plugin],
 })
+=======
+      context.commit('setCBTInfo', payload);
+    },
+    updateResponse(context, payload) {
+      context.commit('updateResponse', payload);
+    },
+    updateUser(context, payload) {
+      context.commit('setUser', payload);
+    },
+    updateToken(context, payload) {
+      context.commit('setUserToken', payload);
+    },
+    updateTestID(context, payload) {
+      context.commit('setTestID', payload);
+    },
+    updateTestQuestions(context, payload) {
+      context.commit('setQuestions', payload);
+    },
+    updateFeedback(context, payload) {
+      context.commit('setFeedback', payload);
+    },
+  },
+  modules: {},
+});
+>>>>>>> 48099d6e89b056c812788c2f7d58f7b2a79c588a
