@@ -217,6 +217,7 @@ import eventbus from "../../eventbus";
 export default {
   data() {
     return {
+      ws: null,
       started: false,
       current: 0,
       loading: false,
