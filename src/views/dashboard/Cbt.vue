@@ -6,7 +6,7 @@
       <a-row :gutter="10" style="padding-top: 40px">
         <a-col :lg="12" :sm="32" :xs="32" class="leader-wrap">
           <h1>Leader Board</h1>
-          <div class="leader-board">
+          <!-- <div class="leader-board">
             <ul>
               <li class="shadow">
                 <div class="position">1</div>
@@ -135,7 +135,8 @@
                 </div>
               </li>
             </ul>
-          </div>
+          </div>-->
+          <Leaderboard />
         </a-col>
         <a-col :lg="12" :sm="32" :xs="32" class="leader-wrap">
           <div class="bordered">
@@ -214,6 +215,7 @@ import { BACKEND } from "../../constants";
 import moment from "moment";
 import Question from "../../components/Question.vue";
 import eventbus from "../../eventbus";
+import Leaderboard from "@/components/Leaderboard";
 export default {
   data() {
     return {
@@ -250,7 +252,8 @@ export default {
   components: {
     FlipCountdown,
     VueCountdown,
-    Question
+    Question,
+    Leaderboard
   },
   computed: {
     ...mapGetters({

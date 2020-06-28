@@ -22,6 +22,7 @@ export default new Vuex.Store({
     testID: 0,
     responses: new Map(),
     feedback: {},
+    schedule: [],
   },
   getters: {
     getCBTInfo: (state) => state.info,
@@ -55,6 +56,9 @@ export default new Vuex.Store({
     setFeedback(state, feedback) {
       state.feedback = feedback;
     },
+    setSchedule(state, schedule) {
+      state.schedule = schedule;
+    },
   },
   actions: {
     setCBTInfo(context, payload) {
@@ -77,6 +81,9 @@ export default new Vuex.Store({
     },
     updateFeedback(context, payload) {
       context.commit("setFeedback", payload);
+    },
+    updateSchedule(context, payload) {
+      context.commit("setSchedule", payload);
     },
   },
   modules: {},
