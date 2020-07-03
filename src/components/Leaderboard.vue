@@ -1,10 +1,19 @@
-
 <!-- @format -->
 <template>
   <div class="leader-board">
-    <ul>
-      <li class="shadow" v-for="(v,k) in leaderboard" :key="k">
-        <div class="position">{{ k+1 }}</div>
+    <div
+      style="background-color: #fff; padding: 20px"
+      class="shadow"
+      v-if="loading"
+    >
+      <a-skeleton active :paragraph="{ rows: 2 }" />
+      <a-skeleton active :paragraph="{ rows: 2 }" />
+      <a-skeleton active :paragraph="{ rows: 2 }" />
+      <a-skeleton active :paragraph="{ rows: 2 }" />
+    </div>
+    <ul v-else>
+      <li class="shadow" v-for="(v, k) in leaderboard" :key="k">
+        <div class="position">{{ k + 1 }}</div>
         <div class="img">
           <img :src="v.student_photo" alt />
         </div>
@@ -27,13 +36,14 @@ export default {
   name: "Leaderboard",
   data: function() {
     return {
-      leaderboard: []
+      loading: false,
+      leaderboard: [],
     };
   },
   computed: {
     ...mapGetters({
-      token: "getToken"
-    })
+      token: "getToken",
+    }),
   },
   methods: {
     async getLeaderboard() {
@@ -43,8 +53,8 @@ export default {
       try {
         const config = {
           headers: {
-            Authorization: `Bearer ${this.token}`
-          }
+            Authorization: `Bearer ${this.token}`,
+          },
         };
         const response = await axios.get(url, config);
         this.leaderboard = response.data.data;
@@ -54,15 +64,15 @@ export default {
         this.loading = false;
         let data = {
           type: "error",
-          message: e.response.data.message
+          message: e.response.data.message,
         };
         // sample error handlinig. check the app.vue file to see the alert function
         eventbus.$emit("show_alert", data);
       }
-    }
+    },
   },
   created() {
     this.getLeaderboard();
-  }
+  },
 };
 </script>

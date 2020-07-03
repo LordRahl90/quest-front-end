@@ -6,7 +6,8 @@
       <a-col :sm="32" :lg="2"></a-col>
       <a-col :sm="32" :lg="10">
         <div class="avatar shadow">
-          <img :src="user.avatar" alt />
+          <img :src="user.avatar" v-if="user.avatar" alt />
+          <a-icon type="user" v-else fill="#fff" />
         </div>
         <div class="shadow" style="background: #fff; padding: 20px">
           <p>User Details</p>
@@ -50,23 +51,28 @@ export default {
   components: { TestHistory },
   computed: {
     ...mapGetters({
-      user: "getUser"
-    })
+      user: "getUser",
+    }),
   },
   mounted() {
     console.log(this.user);
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
 .profile {
   .avatar {
     width: 150px;
+    height: 150px;
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto -30px;
+    background-color: rgb(124, 124, 124);
+    position: relative;
+    z-index: 120;
     img {
       width: 100%;
+      object-fit: cover;
     }
   }
   .shadow {
