@@ -285,7 +285,7 @@ export default {
     async proceed() {
       this.loading = true;
       try {
-        const url = `${BACKEND}/student/cbt/load-questions?question_count=30`;
+        const url = `${BACKEND}/student/cbt/load-questions?question_count=40`;
         const config = {
           headers: {
             Authorization: `Bearer ${this.token}`
