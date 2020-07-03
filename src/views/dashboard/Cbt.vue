@@ -285,7 +285,7 @@ export default {
     async proceed() {
       this.loading = true;
       try {
-        const url = `${BACKEND}/student/cbt/load-questions`;
+        const url = `${BACKEND}/student/cbt/load-questions?question_count=30`;
         const config = {
           headers: {
             Authorization: `Bearer ${this.token}`
@@ -347,6 +347,7 @@ export default {
           }
         };
         const response = await axios.post(url, payload, config);
+        console.log(response.data.data);
         this.$store.dispatch("updateFeedback", response.data.data);
         this.loadingSubmit = false;
         eventbus.$emit("exam_ended");
