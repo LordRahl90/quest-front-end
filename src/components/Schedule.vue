@@ -1,13 +1,7 @@
 <!-- @format -->
 <template>
   <div>
-    <div
-      class="shadow"
-      style="padding: 20px; background: #fff"
-      v-if="!schedule.length"
-    >
-      No schedules
-    </div>
+    <div class="shadow" style="padding: 20px; background: #fff" v-if="!schedule.length">No schedules</div>
     <a-timeline mode="alternate" v-else>
       <a-timeline-item color="blue" v-for="v in schedule" :key="v.id">
         <div class="shadow timeline bw bg-3">
@@ -31,13 +25,13 @@ export default {
   name: "Schedule",
   data: function() {
     return {
-      schedule: [],
+      schedule: []
     };
   },
   computed: {
     ...mapGetters({
-      token: "getToken",
-    }),
+      token: "getToken"
+    })
   },
   methods: {
     async getSchedule() {
@@ -47,8 +41,8 @@ export default {
       try {
         const config = {
           headers: {
-            Authorization: `Bearer ${this.token}`,
-          },
+            Authorization: `Bearer ${this.token}`
+          }
         };
         const response = await axios.get(url, config);
         this.schedule = response.data.data;
@@ -57,15 +51,15 @@ export default {
         this.loading = false;
         let data = {
           type: "error",
-          message: e.response.data.message,
+          message: e.response.data.message
         };
         // sample error handlinig. check the app.vue file to see the alert function
         eventbus.$emit("show_alert", data);
       }
-    },
+    }
   },
   created() {
     this.getSchedule();
-  },
+  }
 };
 </script>

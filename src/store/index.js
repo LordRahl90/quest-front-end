@@ -13,6 +13,7 @@ const vuexLocal = new VuexPersistence({
 export default new Vuex.Store({
   state: {
     user: {},
+    student: {},
     token: "",
     info: {
       subject: "",
@@ -29,6 +30,7 @@ export default new Vuex.Store({
     responses: (state) => state.responses,
     getToken: (state) => state.token,
     getUser: (state) => state.user,
+    getStudent: (state) => state.student,
     getQuestions: (state) => state.questions,
     getCurrentTest: (state) => state.testID,
     getFeedback: (state) => state.feedback,
@@ -45,6 +47,9 @@ export default new Vuex.Store({
     },
     setUser(state, user) {
       state.user = user;
+    },
+    setStudent(state, student) {
+      state.student = student;
     },
     setTestID(state, testID) {
       state.testID = testID;
@@ -69,6 +74,9 @@ export default new Vuex.Store({
     },
     updateUser(context, payload) {
       context.commit("setUser", payload);
+    },
+    updateStudent(context, payload) {
+      context.commit("setStudent", payload);
     },
     updateToken(context, payload) {
       context.commit("setUserToken", payload);

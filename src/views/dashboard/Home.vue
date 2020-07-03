@@ -5,25 +5,25 @@
     <a-row :gutter="10">
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-1">
-          <p class="count">1401</p>
+          <p class="count">{{ rank }}</p>
           <p class="text">Ranking</p>
         </div>
       </a-col>
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-2">
-          <p class="count">&#x20A6;1,401</p>
-          <p class="text">Amount Paid</p>
+          <p class="count">&#x20A6;{{ amountPaid }}</p>
+          <p class="text">Last Amount Paid</p>
         </div>
       </a-col>
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-3">
-          <p class="count">1401</p>
+          <p class="count">{{ totalTests }}</p>
           <p class="text">Total Tests</p>
         </div>
       </a-col>
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-4">
-          <p class="count">20%</p>
+          <p class="count">{{ passRate }}%</p>
           <p class="text">Pass Percentage</p>
         </div>
       </a-col>
@@ -48,12 +48,77 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+import { mapGetters } from "vuex";
+import { BACKEND } from "../../constants";
 import Schedule from "@/components/Schedule";
 import Leaderboard from "@/components/Leaderboard";
 import TestHistory from "@/components/TestHistory";
+// import eventbus from "../../eventbus";
 
 export default {
-  components: { Schedule, Leaderboard, TestHistory }
+  components: { Schedule, Leaderboard, TestHistory },
+  computed: {
+    ...mapGetters({ token: "getToken", student: "getStudent" }),
+    rank() {
+      if (this.student.ranking === undefined) {
+        return 0;
+      }
+      return this.student.ranking.rank;
+    },
+    totalTests() {
+      if (this.student.ranking === undefined) {
+        return 0;
+      }
+      return this.student.ranking.counts;
+    },
+    passRate() {
+      if (this.student.ranking === undefined) {
+        return 0;
+      }
+      return this.student.ranking.pass_rate;
+    },
+    amountPaid() {
+      if (
+        this.student.payments === undefined ||
+        this.student.payments.length == 0
+      ) {
+        return 0;
+      }
+
+      return this.student.payments[this.student.payments.length - 1].amount;
+    }
+  },
+  methods: {
+    async getStudentProfile() {
+      const url = `${BACKEND}/student/me`;
+      this.loading = true;
+
+      try {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${this.token}`
+          }
+        };
+        const response = await axios.get(url, config);
+        console.log(response.data.data);
+        this.$store.dispatch("updateStudent", response.data.data);
+        this.loading = false;
+      } catch (e) {
+        this.loading = false;
+        let data = {
+          type: "error",
+          message: e.response.data.message
+        };
+        console.log(data);
+        // sample error handlinig. check the app.vue file to see the alert function
+        // eventbus.$emit("show_alert", data);
+      }
+    }
+  },
+  created() {
+    this.getStudentProfile();
+  }
 };
 </script>
 <style lang="scss">
