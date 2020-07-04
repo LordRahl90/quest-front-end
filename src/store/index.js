@@ -21,6 +21,7 @@ export default new Vuex.Store({
     },
     questions: [],
     testID: 0,
+    elapsed: 0,
     responses: new Map(),
     feedback: {},
     schedule: [],
@@ -34,6 +35,7 @@ export default new Vuex.Store({
     getQuestions: (state) => state.questions,
     getCurrentTest: (state) => state.testID,
     getFeedback: (state) => state.feedback,
+    getElapsedTime: (state) => state.elapsed,
   },
   mutations: {
     setCBTInfo(state, info) {
@@ -54,6 +56,9 @@ export default new Vuex.Store({
     setTestID(state, testID) {
       state.testID = testID;
       state.responses = new Map();
+    },
+    setElapsed(state, elapsed) {
+      state.elapsed = elapsed;
     },
     setQuestions(state, questions) {
       state.questions = questions;
@@ -92,6 +97,9 @@ export default new Vuex.Store({
     },
     updateSchedule(context, payload) {
       context.commit("setSchedule", payload);
+    },
+    updateElapsed(context, payload) {
+      context.commit("setElapsed", payload);
     },
   },
   modules: {},

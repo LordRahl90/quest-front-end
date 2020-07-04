@@ -54,7 +54,7 @@ import { BACKEND } from "../../constants";
 import Schedule from "@/components/Schedule";
 import Leaderboard from "@/components/Leaderboard";
 import TestHistory from "@/components/TestHistory";
-// import eventbus from "../../eventbus";
+import eventbus from "../../eventbus";
 
 export default {
   components: { Schedule, Leaderboard, TestHistory },
@@ -101,18 +101,20 @@ export default {
           }
         };
         const response = await axios.get(url, config);
-        console.log(response.data.data);
         this.$store.dispatch("updateStudent", response.data.data);
         this.loading = false;
       } catch (e) {
         this.loading = false;
         let data = {
           type: "error",
-          message: e.response.data.message
+          message:
+            e.response.data.message == undefined ||
+            e.response.data.message == ""
+              ? "An error occurred"
+              : e.response.data.message
         };
-        console.log(data);
         // sample error handlinig. check the app.vue file to see the alert function
-        // eventbus.$emit("show_alert", data);
+        eventbus.$emit("show_alert", data);
       }
     }
   },

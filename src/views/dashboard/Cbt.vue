@@ -177,12 +177,7 @@
           style="margin-bottom: 20px; position: absolute; right: 30px;margin-top: -30px"
           :deadline="newTime"
         />
-        <vue-countdown
-          :emit-events="true"
-          :time="newTimeInt"
-          @progress="handleProgress"
-          @end="timeUp"
-        ></vue-countdown>
+        <vue-countdown :emit-events="true" :time="newTimeInt" @end="timeUp"></vue-countdown>
       </div>
 
       <div style="margin: 100px 2% 2%; padding: 2%;">
@@ -224,6 +219,7 @@ export default {
       current: 0,
       loading: false,
       loadingSubmit: false,
+      startTime: null,
       exam: {
         subject: "",
         duration: null
@@ -276,8 +272,12 @@ export default {
     },
     newTimeInt() {
       const tt = this.exam.duration;
-      console.log(tt);
       return parseInt(tt) * 60 * 1000;
+    },
+    duration() {
+      let now = Date();
+      let diff = moment.duration(moment(now).diff(moment(this.startTime)));
+      return parseInt(diff.asMinutes());
     }
   },
   methods: {
@@ -293,7 +293,6 @@ export default {
           }
         };
         const response = await axios.get(url, config);
-        console.log(response.data.data);
         this.$store.dispatch("updateStudent", response.data.data);
         this.loading = false;
       } catch (e) {
@@ -302,9 +301,8 @@ export default {
           type: "error",
           message: e.response.data.message
         };
-        console.log(data);
         // sample error handlinig. check the app.vue file to see the alert function
-        // eventbus.$emit("show_alert", data);
+        eventbus.$emit("show_alert", data);
       }
     },
     async proceed() {
@@ -325,35 +323,35 @@ export default {
           config
         );
 
-        const { questions } = response.data.data;
+        const { questions, elapsed } = response.data.data;
         const testID = response.data.data.test_id;
 
         await this.$store.dispatch("setCBTInfo", this.exam);
         await this.$store.dispatch("updateTestID", testID);
         await this.$store.dispatch("updateTestQuestions", questions);
+        await this.$store.dispatch("updateElapsed", elapsed);
         this.loading = false;
         this.started = true;
+        this.startTime = new Date();
         eventbus.$emit("exam_started");
       } catch (err) {
-        console.log(err);
+        let data = {
+          type: "error",
+          message: err.response.data.message
+        };
+        eventbus.$emit("show_alert", data);
         this.loading = false;
       }
     },
     timeUp() {
-      console.log("Time Up");
       this.submit();
-    },
-    handleProgress(data) {
-      console.log(`Progressing... ${data}`);
     },
     async submit() {
       const r = [];
       const userResponses = this.responses;
-      console.log(userResponses);
 
       // eslint-disable-next-line arrow-parens
       userResponses.forEach((v, k) => {
-        console.log(`KEY: ${k} => Val: ${v}`);
         const i = { id: k, response: v };
         r.push(i);
       });
@@ -361,8 +359,9 @@ export default {
       const payload = {
         test_id: this.currentTest,
         responses: r,
-        duration: 10
+        duration: this.duration
       };
+
       this.loadingSubmit = true;
       try {
         const url = `${BACKEND}/student/cbt/submit-test`;
@@ -378,7 +377,7 @@ export default {
         eventbus.$emit("exam_ended");
         this.$router.push("/dashboard/result");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         this.loadingSubmit = false;
         let data = {
           type: "error",

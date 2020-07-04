@@ -71,12 +71,8 @@ export default {
       this.$router.push("/dashboard/cbt");
     }
   },
-  created() {
-    console.log(this.feedback);
-  },
-  mounted() {
-    console.log(this.feedback);
-  }
+  created() {},
+  mounted() {}
 };
 </script>
 <style lang="scss" scoped>

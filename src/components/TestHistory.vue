@@ -1,11 +1,7 @@
 <!-- @format -->
 <template>
   <div class="leader-board">
-    <div
-      style="background-color: #fff; padding: 20px"
-      class="shadow"
-      v-if="loading"
-    >
+    <div style="background-color: #fff; padding: 20px" class="shadow" v-if="loading">
       <a-skeleton active :paragraph="{ rows: 2 }" />
       <a-skeleton active :paragraph="{ rows: 2 }" />
       <a-skeleton active :paragraph="{ rows: 2 }" />
@@ -43,13 +39,13 @@ export default {
   data: function() {
     return {
       history: [],
-      loading: false,
+      loading: false
     };
   },
   computed: {
     ...mapGetters({
-      token: "getToken",
-    }),
+      token: "getToken"
+    })
   },
   methods: {
     async getRecentTests() {
@@ -59,26 +55,25 @@ export default {
       try {
         const config = {
           headers: {
-            Authorization: `Bearer ${this.token}`,
-          },
+            Authorization: `Bearer ${this.token}`
+          }
         };
         const response = await axios.get(url, config);
         this.history = response.data.data;
-        console.log(this.leaderboard);
         this.loading = false;
       } catch (e) {
         this.loading = false;
         let data = {
           type: "error",
-          message: e.response.data.message,
+          message: e.response.data.message
         };
         // sample error handlinig. check the app.vue file to see the alert function
         eventbus.$emit("show_alert", data);
       }
-    },
+    }
   },
   created() {
     this.getRecentTests();
-  },
+  }
 };
 </script>

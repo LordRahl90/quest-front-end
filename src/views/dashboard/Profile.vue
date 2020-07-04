@@ -51,12 +51,10 @@ export default {
   components: { TestHistory },
   computed: {
     ...mapGetters({
-      user: "getUser",
-    }),
+      user: "getUser"
+    })
   },
-  mounted() {
-    console.log(this.user);
-  },
+  mounted() {}
 };
 </script>
 <style lang="scss" scoped>

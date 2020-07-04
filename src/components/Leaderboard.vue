@@ -54,7 +54,6 @@ export default {
         };
         const response = await axios.get(url, config);
         this.leaderboard = response.data.data;
-        console.log(this.leaderboard);
         this.loading = false;
       } catch (e) {
         this.loading = false;
