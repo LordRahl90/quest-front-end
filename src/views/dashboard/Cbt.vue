@@ -282,6 +282,31 @@ export default {
   },
   methods: {
     ...mapActions(["setCBTInfo", "updateTestQuestions", "updateTestID"]),
+    async getStudentProfile() {
+      const url = `${BACKEND}/student/me`;
+      this.loading = true;
+
+      try {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${this.token}`
+          }
+        };
+        const response = await axios.get(url, config);
+        console.log(response.data.data);
+        this.$store.dispatch("updateStudent", response.data.data);
+        this.loading = false;
+      } catch (e) {
+        this.loading = false;
+        let data = {
+          type: "error",
+          message: e.response.data.message
+        };
+        console.log(data);
+        // sample error handlinig. check the app.vue file to see the alert function
+        // eventbus.$emit("show_alert", data);
+      }
+    },
     async proceed() {
       this.loading = true;
       try {
@@ -361,6 +386,7 @@ export default {
             err.response.data.message || "An error occured. Please try again"
         };
 
+        this.getStudentProfile();
         // sample error handlinig. check the app.vue file to see the alert function
         eventbus.$emit("show_alert", data);
       }

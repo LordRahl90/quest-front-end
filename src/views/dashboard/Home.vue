@@ -5,26 +5,26 @@
     <a-row :gutter="10">
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-1">
-          <p class="count">{{ rank }}</p>
           <p class="text">Ranking</p>
+          <p class="count">{{ rank }}</p>
         </div>
       </a-col>
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-2">
+          <p class="text">Latest Payment</p>
           <p class="count">&#x20A6;{{ amountPaid }}</p>
-          <p class="text">Last Amount Paid</p>
         </div>
       </a-col>
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-3">
-          <p class="count">{{ totalTests }}</p>
           <p class="text">Total Tests</p>
+          <p class="count">{{ totalTests }}</p>
         </div>
       </a-col>
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-4">
+          <p class="text">Pass Rate</p>
           <p class="count">{{ passRate }}%</p>
-          <p class="text">Pass Percentage</p>
         </div>
       </a-col>
     </a-row>
