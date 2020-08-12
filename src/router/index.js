@@ -1,12 +1,11 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Login from '../views/Login.vue';
-import Dashboard from '../views/dashboard/Dashboard.vue';
-import Landing from '../views/cbt/Landing.vue';
-import Examination from '../views/cbt/Examination.vue';
-import Result from '../views/cbt/Result.vue';
+/** @format */
 
-Vue.use(VueRouter);
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Login from '../views/Login.vue'
+import Dashboard from '../views/Dashboard.vue'
+
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -15,39 +14,37 @@ const routes = [
     component: Login,
   },
   {
-    path: '/dashboard',
-    name: 'dashboard',
+    path: '/dashboard/',
     component: Dashboard,
+    children: [
+      {
+        path: '',
+        name: 'Home',
+        component: () => import('../views/dashboard/Home.vue'),
+      },
+      {
+        path: 'cbt',
+        name: 'Cbt',
+        component: () => import('../views/dashboard/Cbt.vue'),
+      },
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: () => import('../views/dashboard/Profile.vue'),
+      },
+      {
+        path: 'result',
+        name: 'Result',
+        component: () => import('../views/dashboard/Result.vue'),
+      },
+    ],
   },
-  {
-    path: '/examination',
-    name: 'exam-landing',
-    component: Landing,
-  },
-  {
-    path: '/examination/proper',
-    name: 'examination',
-    component: Examination,
-  },
-  {
-    path: '/examination/result',
-    name: 'examination-result',
-    component: Result,
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
-];
+]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
-});
+})
 
-export default router;
+export default router
