@@ -22,26 +22,25 @@
   </div>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        response: {},
-        options: [],
-      }
+export default {
+  data() {
+    return {
+      response: {},
+      options: [],
+    };
+  },
+  props: ['question', 'number'],
+  methods: {
+    updateAnswer(e) {
+      let res = { questionID: this.question.id, response: e.target.value };
+      this.$store.dispatch('updateResponse', res);
     },
-    props: ['question', 'number'],
-    methods: {
-      updateAnswer(e) {
-        let res = { questionID: this.question.id, response: e.target.value }
-        this.$store.dispatch('updateResponse', res)
-      },
-      setData() {
-        let question = this.$refs.question
-        let inst = this.$refs.inst
-        question.innerHTML = this.question.question
-        inst.innerHTML = this.question.section
-        this.options = this.question.option
-      },
+    setData() {
+      let question = this.$refs.question;
+      let inst = this.$refs.inst;
+      question.innerHTML = this.question.question;
+      inst.innerHTML = this.question.section;
+      this.options = this.question.option;
     },
   },
   updated() {
