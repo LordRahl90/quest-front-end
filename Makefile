@@ -3,3 +3,5 @@ build:
 
 push:
 	docker push lordrahl/quest-front-end:latest
+
+ci: build push
