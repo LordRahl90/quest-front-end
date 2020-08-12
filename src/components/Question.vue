@@ -53,23 +53,17 @@ export default {
 </script>
 <style lang="scss" scoped>
 .question {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
   .title {
     font-size: 16px;
     font-weight: 600;
   }
-  .question {
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    .title {
-      font-size: 16px;
-      font-weight: 600;
-    }
-    .question-text {
-      border-bottom: 1px solid #eee;
-      padding-bottom: 12px;
-    }
+  .question-text {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
   }
 }
 </style>

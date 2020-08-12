@@ -24,4 +24,5 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME}}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: lordrahl/quest-front-end
-          tag: latest
+          tags: latest
+          push: true

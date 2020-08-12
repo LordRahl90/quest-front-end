@@ -6,136 +6,6 @@
       <a-row :gutter="10" style="padding-top: 40px">
         <a-col :lg="12" :sm="32" :xs="32" class="leader-wrap">
           <h1>Leader Board</h1>
-          <!-- <div class="leader-board">
-            <ul>
-              <li class="shadow">
-                <div class="position">1</div>
-                <div class="img">
-                  <img
-                    src="
-                    https://api.adorable.io/avatars/285/john@adorable.png"
-                    alt
-                  />
-                </div>
-                <div class="user">
-                  <span class="name">Sam Jones</span>
-                  <span class="score">12,321</span>
-                </div>
-              </li>
-              <li class="shadow">
-                <div class="position">1</div>
-                <div class="img">
-                  <img
-                    src="
-                    https://api.adorable.io/avatars/285/abott@adorable.png"
-                    alt
-                  />
-                </div>
-                <div class="user">
-                  <span class="name">Sam Jones</span>
-                  <span class="score">12,321</span>
-                </div>
-              </li>
-              <li class="shadow">
-                <div class="position">1</div>
-                <div class="img">
-                  <img
-                    src="
-                    https://api.adorable.io/avatars/285/sam@adorable.png"
-                    alt
-                  />
-                </div>
-                <div class="user">
-                  <span class="name">Sam Jones</span>
-                  <span class="score">12,321</span>
-                </div>
-              </li>
-              <li class="shadow">
-                <div class="position">1</div>
-                <div class="img">
-                  <img
-                    src="
-                    https://api.adorable.io/avatars/285/mike@adorable.png"
-                    alt
-                  />
-                </div>
-                <div class="user">
-                  <span class="name">Sam Jones</span>
-                  <span class="score">12,321</span>
-                </div>
-              </li>
-              <li class="shadow">
-                <div class="position">1</div>
-                <div class="img">
-                  <img
-                    src="
-                    https://api.adorable.io/avatars/285/jane@adorable.png"
-                    alt
-                  />
-                </div>
-                <div class="user">
-                  <span class="name">Sam Jones</span>
-                  <span class="score">12,321</span>
-                </div>
-              </li>
-              <li class="shadow">
-                <div class="position">1</div>
-                <div class="img">
-                  <img
-                    src="
-                    https://api.adorable.io/avatars/285/abott@adorable.png"
-                    alt
-                  />
-                </div>
-                <div class="user">
-                  <span class="name">Sam Jones</span>
-                  <span class="score">12,321</span>
-                </div>
-              </li>
-              <li class="shadow">
-                <div class="position">1</div>
-                <div class="img">
-                  <img
-                    src="
-                    https://api.adorable.io/avatars/285/sam@adorable.png"
-                    alt
-                  />
-                </div>
-                <div class="user">
-                  <span class="name">Sam Jones</span>
-                  <span class="score">12,321</span>
-                </div>
-              </li>
-              <li class="shadow">
-                <div class="position">1</div>
-                <div class="img">
-                  <img
-                    src="
-                    https://api.adorable.io/avatars/285/mike@adorable.png"
-                    alt
-                  />
-                </div>
-                <div class="user">
-                  <span class="name">Sam Jones</span>
-                  <span class="score">12,321</span>
-                </div>
-              </li>
-              <li class="shadow">
-                <div class="position">1</div>
-                <div class="img">
-                  <img
-                    src="
-                    https://api.adorable.io/avatars/285/jane@adorable.png"
-                    alt
-                  />
-                </div>
-                <div class="user">
-                  <span class="name">Sam Jones</span>
-                  <span class="score">12,321</span>
-                </div>
-              </li>
-            </ul>
-          </div>-->
           <Leaderboard />
         </a-col>
         <a-col :lg="12" :sm="32" :xs="32" class="leader-wrap">
@@ -202,15 +72,15 @@
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from "vuex";
-import axios from "axios";
-import FlipCountdown from "vue2-flip-countdown";
-import VueCountdown from "@chenfengyuan/vue-countdown";
-import { BACKEND } from "../../constants";
-import moment from "moment";
-import Question from "../../components/Question.vue";
-import eventbus from "../../eventbus";
-import Leaderboard from "@/components/Leaderboard";
+import { mapActions, mapGetters } from 'vuex';
+import axios from 'axios';
+import FlipCountdown from 'vue2-flip-countdown';
+import VueCountdown from '@chenfengyuan/vue-countdown';
+import { BACKEND } from '../../constants';
+import moment from 'moment';
+import Question from '../../components/Question.vue';
+import eventbus from '../../eventbus';
+import Leaderboard from '@/components/Leaderboard';
 export default {
   data() {
     return {
@@ -221,53 +91,51 @@ export default {
       loadingSubmit: false,
       startTime: null,
       exam: {
-        subject: "",
-        duration: null
+        subject: '',
+        duration: null,
       },
       subjects: {
-        0: "english",
-        1: "mathematics",
-        2: "commerce",
-        3: "accounting",
-        4: "biology",
-        5: "physics",
-        6: "chemistry",
-        7: "englishlit",
-        8: "government",
-        9: "crk",
-        10: "geography",
-        11: "economics",
-        12: "irk",
-        13: "civiledu",
-        14: "insurance",
-        15: "currentaffairs",
-        16: "history"
-      }
+        0: 'english',
+        1: 'mathematics',
+        2: 'commerce',
+        3: 'accounting',
+        4: 'biology',
+        5: 'physics',
+        6: 'chemistry',
+        7: 'englishlit',
+        8: 'government',
+        9: 'crk',
+        10: 'geography',
+        11: 'economics',
+        12: 'irk',
+        13: 'civiledu',
+        14: 'insurance',
+        15: 'currentaffairs',
+        16: 'history',
+      },
     };
   },
   components: {
     FlipCountdown,
     VueCountdown,
     Question,
-    Leaderboard
+    Leaderboard,
   },
   computed: {
     ...mapGetters({
-      token: "getToken",
-      user: "getUser",
-      info: "getCBTInfo",
-      currentTest: "getCurrentTest",
-      questions: "getQuestions",
-      responses: "responses"
+      token: 'getToken',
+      user: 'getUser',
+      info: 'getCBTInfo',
+      currentTest: 'getCurrentTest',
+      questions: 'getQuestions',
+      responses: 'responses',
     }),
     activeQuestion() {
       return this.questions[this.question];
     },
     newTime() {
       const duration = this.exam.duration;
-      const end = moment()
-        .add(duration, "minutes")
-        .format("Y-MM-DD H:mm:ss");
+      const end = moment().add(duration, 'minutes').format('Y-MM-DD H:mm:ss');
       return end;
     },
     newTimeInt() {
@@ -278,10 +146,10 @@ export default {
       let now = Date();
       let diff = moment.duration(moment(now).diff(moment(this.startTime)));
       return parseInt(diff.asMinutes());
-    }
+    },
   },
   methods: {
-    ...mapActions(["setCBTInfo", "updateTestQuestions", "updateTestID"]),
+    ...mapActions(['setCBTInfo', 'updateTestQuestions', 'updateTestID']),
     async getStudentProfile() {
       const url = `${BACKEND}/student/me`;
       this.loading = true;
@@ -289,20 +157,20 @@ export default {
       try {
         const config = {
           headers: {
-            Authorization: `Bearer ${this.token}`
-          }
+            Authorization: `Bearer ${this.token}`,
+          },
         };
         const response = await axios.get(url, config);
-        this.$store.dispatch("updateStudent", response.data.data);
+        this.$store.dispatch('updateStudent', response.data.data);
         this.loading = false;
       } catch (e) {
         this.loading = false;
         let data = {
-          type: "error",
-          message: e.response.data.message
+          type: 'error',
+          message: e.response.data.message,
         };
         // sample error handlinig. check the app.vue file to see the alert function
-        eventbus.$emit("show_alert", data);
+        eventbus.$emit('show_alert', data);
       }
     },
     async proceed() {
@@ -311,35 +179,35 @@ export default {
         const url = `${BACKEND}/student/cbt/load-questions?question_count=40`;
         const config = {
           headers: {
-            Authorization: `Bearer ${this.token}`
-          }
+            Authorization: `Bearer ${this.token}`,
+          },
         };
         const response = await axios.post(
           url,
           {
             subject: this.exam.subject,
-            duration: this.exam.duration
+            duration: this.exam.duration,
           },
-          config
+          config,
         );
 
         const { questions, elapsed } = response.data.data;
         const testID = response.data.data.test_id;
 
-        await this.$store.dispatch("setCBTInfo", this.exam);
-        await this.$store.dispatch("updateTestID", testID);
-        await this.$store.dispatch("updateTestQuestions", questions);
-        await this.$store.dispatch("updateElapsed", elapsed);
+        await this.$store.dispatch('setCBTInfo', this.exam);
+        await this.$store.dispatch('updateTestID', testID);
+        await this.$store.dispatch('updateTestQuestions', questions);
+        await this.$store.dispatch('updateElapsed', elapsed);
         this.loading = false;
         this.started = true;
         this.startTime = new Date();
-        eventbus.$emit("exam_started");
+        eventbus.$emit('exam_started');
       } catch (err) {
         let data = {
-          type: "error",
-          message: err.response.data.message
+          type: 'error',
+          message: err.response.data.message,
         };
-        eventbus.$emit("show_alert", data);
+        eventbus.$emit('show_alert', data);
         this.loading = false;
       }
     },
@@ -359,7 +227,7 @@ export default {
       const payload = {
         test_id: this.currentTest,
         responses: r,
-        duration: this.duration
+        duration: this.duration,
       };
 
       this.loadingSubmit = true;
@@ -367,27 +235,27 @@ export default {
         const url = `${BACKEND}/student/cbt/submit-test`;
         const config = {
           headers: {
-            Authorization: `Bearer ${this.token}`
-          }
+            Authorization: `Bearer ${this.token}`,
+          },
         };
         const response = await axios.post(url, payload, config);
         console.log(response.data.data);
-        this.$store.dispatch("updateFeedback", response.data.data);
+        this.$store.dispatch('updateFeedback', response.data.data);
         this.loadingSubmit = false;
-        eventbus.$emit("exam_ended");
-        this.$router.push("/dashboard/result");
+        eventbus.$emit('exam_ended');
+        this.$router.push('/dashboard/result');
       } catch (err) {
         // console.log(err);
         this.loadingSubmit = false;
         let data = {
-          type: "error",
+          type: 'error',
           message:
-            err.response.data.message || "An error occured. Please try again"
+            err.response.data.message || 'An error occured. Please try again',
         };
 
         this.getStudentProfile();
         // sample error handlinig. check the app.vue file to see the alert function
-        eventbus.$emit("show_alert", data);
+        eventbus.$emit('show_alert', data);
       }
     },
     next() {
@@ -395,8 +263,8 @@ export default {
     },
     prev() {
       this.current--;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped lang="scss">
@@ -486,7 +354,7 @@ export default {
 }
 .steps-content {
   margin-top: 16px;
-  border: 1px solid #e9e9e9;
+  border: 3px solid #e9e9e9;
   border-radius: 6px;
   background-color: #fafafa;
   min-height: 200px;
@@ -494,6 +362,6 @@ export default {
 }
 
 .steps-action {
-  margin-top: 24px;
+  margin-top: 2%;
 }
 </style>
