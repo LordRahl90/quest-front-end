@@ -20,9 +20,9 @@
             <p class="login-header">
               Welcome to Quest-FE
             </p>
-            <a-input a-model="user.email" label="Email" name="email" type="text" />
+            <a-input v-model="user.email" label="Email" name="email" type="text" />
 
-            <a-input id="password" a-model="user.password" label="Password" name="password" type="password" style="margin-top: 20px" />
+            <a-input id="password" v-model="user.password" label="Password" name="password" type="password" style="margin-top: 20px" />
             <a-button type="primary" :loading="loading" style="width; 100%; height: 40px; margin-top: 20px" @click="authenticate"
               >Login</a-button
             >
@@ -36,6 +36,7 @@
   import axios from 'axios'
   import { mapActions, mapGetters } from 'vuex'
   import { BACKEND } from '../constants'
+  import eventbus from '../eventbus'
 
   export default {
     name: 'Login',
@@ -69,7 +70,12 @@
           this.$router.push('/dashboard')
         } catch (err) {
           this.loading = false
-          console.log(err)
+          let data = {
+            type: 'error',
+            message: err.response.data.message,
+          }
+          // sample error handlinig. check the app.vue file to see the alert function
+          eventbus.$emit('show_alert', data)
         }
       },
     },
