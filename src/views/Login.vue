@@ -17,7 +17,7 @@
                 <a-toolbar-title>Welcome to Quest-FE</a-toolbar-title>
                 <a-spacer />
             </a-toolbar>-->
-            <p class="login-header">Welcome to Quest-FE</p>
+            <p class="login-header">Welcome to Quest Student Zone</p>
             <a-input v-model="user.email" label="Email" name="email" type="text" />
 
             <a-input
