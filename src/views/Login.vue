@@ -4,21 +4,20 @@
   <div id="inspire">
     <div class="fill-height" style="padding: 0; background: #fff">
       <a-row>
-        <a-col :span="12" class="page">
-          <div class="heading">
-            <!-- Welcome to Quest-FE -->
-          </div>
-          <img src="../assets/book.svg" alt style="width: 50%; margin: -60px 15% 10px 15%" />
-          <img src="../assets/study.svg" alt style="width: 50%; margin: 0 0 0 45%" />
-        </a-col>
-        <a-col :span="12" class="page_">
+        <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12" class="page_">
           <div class="bordered">
             <!-- <a-toolbar color="primary" dark flat>
                 <a-toolbar-title>Welcome to Quest-FE</a-toolbar-title>
                 <a-spacer />
             </a-toolbar>-->
             <p class="login-header">Welcome to Quest Student Zone</p>
-            <a-input v-model="user.email" label="Email" name="email" type="text" />
+            <a-input
+              v-model="user.email"
+              label="Email"
+              name="email"
+              type="text"
+              placeholder="Email Address"
+            />
 
             <a-input
               id="password"
@@ -27,14 +26,31 @@
               name="password"
               type="password"
               style="margin-top: 20px"
+              placeholder="Password"
             />
             <a-button
               type="primary"
               :loading="loading"
               style="width; 100%; height: 40px; margin-top: 20px"
               @click="authenticate"
-            >Login</a-button>
+              >Login</a-button
+            >
           </div>
+        </a-col>
+        <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12" class="photo page">
+          <div class="heading">
+            <!-- Welcome to Quest-FE -->
+          </div>
+          <img
+            src="../assets/book.svg"
+            alt
+            style="width: 50%; margin: 10% 15% 10% 15%"
+          />
+          <img
+            src="../assets/study.svg"
+            alt
+            style="width: 50%; margin: 10% 0 10 45%"
+          />
         </a-col>
       </a-row>
     </div>
@@ -102,13 +118,9 @@ export default {
   padding: 20px !important;
 }
 .page {
-  height: 100vh;
-  padding-top: 200px;
-  // width: 100%;
-  // background-image: url('../assets/book.svg');
-  // background-size: 30%;
-  // background-position-x: 97%;
-  // background-position-y: 90%;
+  height: 100%;
+  padding-top: 5%;
+
   .heading {
     position: absolute;
     top: 50px;
@@ -119,6 +131,7 @@ export default {
     color: #383838;
   }
 }
+
 .page_ {
   height: 100vh;
   background-color: #fafafa;
@@ -126,7 +139,7 @@ export default {
 
   .bordered {
     border: 1px solid #eee;
-    margin: 0 100px;
+    margin: 0 5px;
     background-color: #fff;
     transform: translateY(50%);
     padding: 20px;
@@ -139,6 +152,12 @@ export default {
       border-bottom: 0.3px solid #eee;
       // background-color: #008cff50;
     }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  body {
+    background-color: indianred;
   }
 }
 </style>
