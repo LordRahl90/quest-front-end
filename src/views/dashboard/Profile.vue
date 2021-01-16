@@ -31,6 +31,15 @@
             Guardian Phone No.:
             <span>{{ user.guardian_phone }}</span>
           </h3>
+          <h2>Payments</h2>
+          <a-list item-layout="horizontal" :data-source="student.payments">
+            <a-list-item v-for="payment in student.payments" :key="payment.id">
+              Amount: &#x20A6;<b>{{ payment.amount.toLocaleString() }}</b>
+              <a-divider type="vertical" />
+              Balance: &#x20A6;
+              <b>{{ payment.balance.toLocaleString() }}</b>
+            </a-list-item>
+          </a-list>
         </div>
       </a-col>
 
@@ -42,8 +51,9 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-import TestHistory from "@/components/TestHistory";
+import { mapGetters } from 'vuex';
+import TestHistory from '@/components/TestHistory';
+import eventbus from '../../eventbus';
 export default {
   data() {
     return {};
@@ -51,10 +61,13 @@ export default {
   components: { TestHistory },
   computed: {
     ...mapGetters({
-      user: "getUser"
-    })
+      user: 'getUser',
+      student: 'getStudent',
+    }),
   },
-  mounted() {}
+  mounted() {
+    eventbus.$emit('close-drawer');
+  },
 };
 </script>
 <style lang="scss" scoped>

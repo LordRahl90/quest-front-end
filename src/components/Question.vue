@@ -5,14 +5,19 @@
     <p class="title">
       Question {{ number }}
       <span
-        style="display:block; font-size: 10px; font-weight: 300"
+        style="display: block; font-size: 10px; font-weight: 300"
         ref="inst"
       ></span>
     </p>
     <p class="question-text" ref="question"></p>
     <a-radio-group name="options" v-model="response" @change="updateAnswer">
       <a-row>
-        <a-col :span="24" v-for="(value, index) in options" :key="index">
+        <a-col
+          :span="24"
+          class="options"
+          v-for="(value, index) in options"
+          :key="index"
+        >
           <a-radio :value="index">
             <span>{{ value }}</span>
           </a-radio>
@@ -64,6 +69,11 @@ export default {
   .question-text {
     border-bottom: 1px solid #eee;
     padding-bottom: 12px;
+    overflow: auto;
   }
+}
+
+.options {
+  overflow: auto;
 }
 </style>

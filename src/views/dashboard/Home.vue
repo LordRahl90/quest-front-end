@@ -2,8 +2,8 @@
 
 <template>
   <div class="home">
-    <a-row :gutter="10">
-      <a-col :sm="32" :lg="6">
+    <a-row :gutter="48">
+      <a-col :sm="32" :md="32" :lg="6">
         <div class="my-widget bg-1">
           <p class="text">Ranking</p>
           <p class="count">{{ rank }}</p>
@@ -11,7 +11,7 @@
       </a-col>
       <a-col :sm="32" :lg="6">
         <div class="my-widget bg-2">
-          <p class="text">Latest Payment</p>
+          <p class="text">Remaining Balance</p>
           <p class="count">&#x20A6;{{ amountPaid }}</p>
         </div>
       </a-col>
@@ -48,35 +48,26 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-import { mapGetters } from "vuex";
-import { BACKEND } from "../../constants";
-import Schedule from "@/components/Schedule";
-import Leaderboard from "@/components/Leaderboard";
-import TestHistory from "@/components/TestHistory";
-import eventbus from "../../eventbus";
+import axios from 'axios';
+import { mapGetters } from 'vuex';
+import { BACKEND } from '../../constants';
+import Schedule from '@/components/Schedule';
+import Leaderboard from '@/components/Leaderboard';
+import TestHistory from '@/components/TestHistory';
+import eventbus from '../../eventbus';
 
 export default {
   components: { Schedule, Leaderboard, TestHistory },
   computed: {
-    ...mapGetters({ token: "getToken", student: "getStudent" }),
+    ...mapGetters({ token: 'getToken', student: 'getStudent' }),
     rank() {
-      if (this.student.ranking === undefined) {
-        return 0;
-      }
-      return this.student.ranking.rank;
+      return this.student.ranking == null ? 0 : this.student.ranking.rank;
     },
     totalTests() {
-      if (this.student.ranking === undefined) {
-        return 0;
-      }
-      return this.student.ranking.counts;
+      return this.student.ranking == null ? 0 : this.student.ranking.counts;
     },
     passRate() {
-      if (this.student.ranking === undefined) {
-        return 0;
-      }
-      return this.student.ranking.pass_rate;
+      return this.student.ranking == null ? 0 : this.student.ranking.pass_rate;
     },
     amountPaid() {
       if (
@@ -86,8 +77,8 @@ export default {
         return 0;
       }
 
-      return this.student.payments[this.student.payments.length - 1].amount;
-    }
+      return this.student.payments[this.student.payments.length - 1].balance;
+    },
   },
   methods: {
     async getStudentProfile() {
@@ -97,30 +88,30 @@ export default {
       try {
         const config = {
           headers: {
-            Authorization: `Bearer ${this.token}`
-          }
+            Authorization: `Bearer ${this.token}`,
+          },
         };
         const response = await axios.get(url, config);
-        this.$store.dispatch("updateStudent", response.data.data);
+        this.$store.dispatch('updateStudent', response.data.data);
         this.loading = false;
       } catch (e) {
         this.loading = false;
         let data = {
-          type: "error",
+          type: 'error',
           message:
             e.response.data.message == undefined ||
-            e.response.data.message == ""
-              ? "An error occurred"
-              : e.response.data.message
+            e.response.data.message == ''
+              ? 'An error occurred'
+              : e.response.data.message,
         };
         // sample error handlinig. check the app.vue file to see the alert function
-        eventbus.$emit("show_alert", data);
+        eventbus.$emit('show_alert', data);
       }
-    }
+    },
   },
   created() {
     this.getStudentProfile();
-  }
+  },
 };
 </script>
 <style lang="scss">

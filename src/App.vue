@@ -132,4 +132,27 @@ select {
 select:focus {
   outline: none;
 }
+#content-desktop {
+  display: block;
+}
+#content-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  #content-desktop {
+    display: none;
+  }
+  #content-mobile {
+    display: block;
+  }
+
+  .side-photo {
+    display: none;
+  }
+
+  #photo-page {
+    display: none;
+  }
+}
 </style>

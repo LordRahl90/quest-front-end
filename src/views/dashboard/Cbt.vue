@@ -12,8 +12,14 @@
           <div class="bordered">
             <p
               class="login-header"
-              style="font-size: 20px; border-bottom: 1px solid #eee; padding-bottom: 12px;"
-            >Start Examination</p>
+              style="
+                font-size: 20px;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 12px;
+              "
+            >
+              Start Examination
+            </p>
 
             <label>Select Subject</label>
             <select name id v-model="exam.subject" style="margin-bottom: 20px">
@@ -22,17 +28,26 @@
                 v-for="subject in Object.values(subjects)"
                 :value="subject"
                 :key="subject"
-              >{{ subject }}</option>
+              >
+                {{ subject }}
+              </option>
             </select>
 
-            <label>Duration</label>
-            <a-input id="password" v-model="exam.duration" label="text" style="margin-top: 0px" />
+            <label>Duration (in minutes)</label>
+            <a-input
+              placeholder="Duration (in minutes)"
+              id="password"
+              v-model="exam.duration"
+              label="text"
+              style="margin-top: 0px"
+            />
             <a-button
               type="primary"
               :loading="loading"
               style="width; 100%; height: 40px; margin-top: 20px"
               @click="proceed"
-            >Start</a-button>
+              >Start</a-button
+            >
           </div>
         </a-col>
       </a-row>
@@ -42,30 +57,53 @@
       <div>
         <span
           style="font-size: 20px; font-weight: 600; text-transform: capitalize"
-        >{{ info.subject }}</span>
+          >{{ info.subject }}</span
+        >
         <flip-countdown
-          style="margin-bottom: 20px; position: absolute; right: 30px;margin-top: -30px"
+          style="
+            margin-bottom: 20px;
+            position: absolute;
+            right: 30px;
+            margin-top: -30px;
+          "
           :deadline="newTime"
         />
-        <vue-countdown :emit-events="true" :time="newTimeInt" @end="timeUp"></vue-countdown>
+        <vue-countdown
+          :emit-events="true"
+          :time="newTimeInt"
+          @end="timeUp"
+        ></vue-countdown>
       </div>
 
-      <div style="margin: 100px 2% 2%; padding: 2%;">
+      <div style="margin: 100px 2% 2%; padding: 2%">
         <a-tabs v-model="current">
-          <a-tab-pane v-for="(n, i) in questions" :key="i" :tab="`Question ${i + 1}`">
+          <a-tab-pane
+            v-for="(n, i) in questions"
+            :key="i"
+            :tab="`Question ${i + 1}`"
+          >
             <question :question="n" :number="i + 1" />
           </a-tab-pane>
         </a-tabs>
         <div class="steps-action">
-          <a-button style @click="prev" :disabled="current <= 0">Previous</a-button>
+          <a-button style @click="prev" :disabled="current <= 0"
+            >Previous</a-button
+          >
           <a-button
-            style="margin-left: 12px;"
+            style="margin-left: 12px"
             type="primary"
             @click="next"
             :disabled="current === questions.length - 1"
-          >Next</a-button>
+            >Next</a-button
+          >
 
-          <a-button style="float: right" type="danger" :loading="loadingSubmit" @click="submit">Done</a-button>
+          <a-button
+            style="float: right"
+            type="danger"
+            :loading="loadingSubmit"
+            @click="submit"
+            >Done</a-button
+          >
         </div>
       </div>
     </div>
@@ -120,6 +158,9 @@ export default {
     VueCountdown,
     Question,
     Leaderboard,
+  },
+  mounted() {
+    eventbus.$emit('close-drawer');
   },
   computed: {
     ...mapGetters({

@@ -28,24 +28,27 @@
               style="margin-top: 20px"
               placeholder="Password"
             />
-            <a-button
-              type="primary"
-              :loading="loading"
-              style="width; 100%; height: 40px; margin-top: 20px"
-              @click="authenticate"
-              >Login</a-button
-            >
+            <a-row>
+              <a-button
+                type="primary"
+                :loading="loading"
+                style="width; 100%; height: 40px; margin-top: 20px"
+                @click="authenticate"
+                >Login</a-button
+              >
+            </a-row>
           </div>
         </a-col>
-        <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12" class="photo page">
-          <div class="heading">
-            <!-- Welcome to Quest-FE -->
-          </div>
-          <img
-            src="../assets/book.svg"
-            alt
-            style="width: 50%; margin: 10% 15% 10% 15%"
-          />
+        <a-col
+          :xs="24"
+          :sm="24"
+          :md="24"
+          :lg="12"
+          :xl="12"
+          class="photo page side-photo"
+          id="photo-page"
+        >
+          <img src="../assets/book.svg" alt style="width: 50%" />
           <img
             src="../assets/study.svg"
             alt
@@ -91,14 +94,30 @@ export default {
         this.$store.dispatch('updateUser', user);
         this.$store.dispatch('updateToken', token);
         this.loading = false;
+        if (!user.password_reset) {
+          this.$router.push('/reset-password');
+          return;
+        }
         this.$router.push('/dashboard');
       } catch (err) {
         this.loading = false;
-        let data = {
-          type: 'error',
-          message: err.response.data.message,
-        };
-        // sample error handlinig. check the app.vue file to see the alert function
+        let data = {};
+        if (
+          err.response.data.error != undefined ||
+          err.response.data.error != null
+        ) {
+          data = {
+            type: 'error',
+            message: err.response.data.error,
+          };
+        } else {
+          data = {
+            type: 'error',
+            message: err.response.data.message,
+          };
+        }
+
+        // sample error handling. check the app.vue file to see the alert function
         eventbus.$emit('show_alert', data);
       }
     },
@@ -119,7 +138,7 @@ export default {
 }
 .page {
   height: 100%;
-  padding-top: 5%;
+  padding-top: 2%;
 
   .heading {
     position: absolute;
@@ -152,12 +171,6 @@ export default {
       border-bottom: 0.3px solid #eee;
       // background-color: #008cff50;
     }
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  body {
-    background-color: indianred;
   }
 }
 </style>

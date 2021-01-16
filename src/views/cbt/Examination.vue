@@ -22,25 +22,37 @@
         vertical
       >
         <v-tabs-slider />
-        <v-tab v-for="(i, n) in questions" :key="n.id" :href="`#tab-${n}`">No. {{ n + 1 }}</v-tab>
+        <v-tab v-for="(i, n) in questions" :key="n.id" :href="`#tab-${n}`"
+          >No. {{ n + 1 }}</v-tab
+        >
         <v-tab-item v-for="(n, i) in questions" :key="n.id" :value="'tab-' + i">
-          <Question :title="i + 1" v-bind:data="questions[i]" @answered="manageScores" />
+          <Question
+            :title="i + 1"
+            v-bind:data="questions[i]"
+            @answered="manageScores"
+          />
         </v-tab-item>
       </v-tabs>
 
       <!-- <Question /> -->
       <v-layout row wrap>
         <v-flex d-flex lg6 md6 sm12 xs12 justify-center>
-          <v-btn @click="prev" x-large color="info" dark>Previous Question</v-btn>
+          <v-btn @click="prev" x-large color="info" dark
+            >Previous Question</v-btn
+          >
         </v-flex>
         <v-flex d-flex lg6 md6 sm12 xs12 justify-center>
-          <v-btn @click="next" append-icon="next" x-large color="info" dark>Next Question</v-btn>
+          <v-btn @click="next" append-icon="next" x-large color="info" dark
+            >Next Question</v-btn
+          >
         </v-flex>
       </v-layout>
 
       <v-layout row wrap>
         <v-flex d-flex lg6 md12 sm12 xs12 justify-center>
-          <v-btn @click="submit" x-large color="error" dark>Complete Test</v-btn>
+          <v-btn @click="submit" x-large color="error" dark
+            >Complete Test</v-btn
+          >
         </v-flex>
       </v-layout>
     </v-container>
@@ -83,9 +95,7 @@ export default {
     },
     newTime() {
       const { duration } = this.info;
-      const end = moment()
-        .add(duration, 'minutes')
-        .format('Y-MM-DD H:mm:ss');
+      const end = moment().add(duration, 'minutes').format('Y-MM-DD H:mm:ss');
       return end;
     },
   },
@@ -99,7 +109,6 @@ export default {
   methods: {
     ...mapActions(['updateResponse']),
     manageScores(questionID, response) {
-      console.log(`Question iD: ${questionID}, Response is: ${response} `);
       const res = { questionID, response };
       this.$store.dispatch('updateResponse', res);
     },
@@ -123,7 +132,6 @@ export default {
     async submit() {
       const r = [];
       const userResponses = this.responses;
-      console.log(userResponses);
 
       // eslint-disable-next-line arrow-parens
       userResponses.forEach((v, k) => {

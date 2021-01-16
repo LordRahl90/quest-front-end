@@ -1,36 +1,62 @@
 <!-- @format -->
 <template>
   <a-layout id="components-layout-demo-custom-trigger" class="dashboard">
-    <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
-      <div style="height: 64px; background: #eee; line-height: 64px; text-align: center">Quest FE</div>
-      <a-menu v-if="!examStarted" theme="dark" mode="inline" :default-selected-keys="['1']">
-        <a-menu-item key="1">
-          <router-link to="/dashboard">
-            <a-icon type="dashboard" />
+    <a-drawer
+      title="Quest Tutors"
+      placement="left"
+      :closable="true"
+      :visible="visible"
+      :get-container="false"
+      :wrap-style="{ position: 'absolute' }"
+      @close="onClose"
+    >
+      <a-list item-layout="horizontal">
+        <a-list-item @click="onClose()">
+          <router-link class="drawer-link" to="/dashboard">
+            <!-- <a-icon type="dashboard" /> -->
             <span>Dashboard</span>
           </router-link>
-        </a-menu-item>
-        <a-menu-item key="2">
+        </a-list-item>
+
+        <a-list-item>
           <router-link to="/dashboard/cbt">
-            <a-icon type="laptop" />
+            <!-- <a-icon type="laptop" /> -->
             <span>CBT</span>
           </router-link>
-        </a-menu-item>
-        <a-menu-item key="3">
+        </a-list-item>
+
+        <a-list-item>
           <router-link to="/dashboard/profile">
-            <a-icon type="user" />
+            <!-- <a-icon type="user" /> -->
             <span>Profile</span>
           </router-link>
-        </a-menu-item>
-      </a-menu>
-    </a-layout-sider>
+        </a-list-item>
+        <a-list-item @click="logout">
+          <span>Logout</span>
+        </a-list-item>
+      </a-list>
+    </a-drawer>
     <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
+      <a-page-header
+        style="border: 1px solid rgb(235, 237, 240)"
+        title="Quest Tutors"
+        v-bind:sub-title="salutation"
+        backIcon="menu"
+      >
         <a-icon
           v-if="!examStarted"
           class="trigger"
           :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-          @click="() => (collapsed = !collapsed)"
+          @click="showDrawer"
+        />
+      </a-page-header>
+
+      <!-- <a-layout-header style="background: #fff; padding: 0">
+        <a-icon
+          v-if="!examStarted"
+          class="trigger"
+          :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+          @click="showDrawer"
         />
         <span class="welcome">Welcome, {{ user.full_name }}</span>
         <span
@@ -40,7 +66,7 @@
         >
           <a-icon type="logout" />Logout
         </span>
-      </a-layout-header>
+      </a-layout-header> -->
       <a-layout-content :style="{ padding: '24px', minHeight: '100vh' }">
         <router-view />
       </a-layout-content>
@@ -49,33 +75,46 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import eventbus from "../eventbus";
+import { mapGetters } from 'vuex';
+import eventbus from '../eventbus';
 
 export default {
-  name: "Dashboard",
+  name: 'Dashboard',
   data() {
     return {
-      collapsed: false,
-      examStarted: false
+      collapsed: true,
+      visible: false,
+      examStarted: false,
     };
   },
   methods: {
     logout() {
       sessionStorage.clear();
       localStorage.clear();
-      this.$router.push("/");
-    }
+      this.$router.push('/');
+    },
+    showDrawer() {
+      this.visible = true;
+    },
+    onClose() {
+      this.visible = false;
+    },
+    showDashboard() {
+      this.$router.push('/dashboard');
+    },
   },
   computed: {
     ...mapGetters({
-      token: "getToken",
-      user: "getUser"
-    })
+      token: 'getToken',
+      user: 'getUser',
+    }),
+    salutation() {
+      return 'Welcome, ' + this.user.full_name;
+    },
   },
   created() {
-    if (this.token === "") {
-      this.$router.push("/");
+    if (this.token === '') {
+      this.$router.push('/');
     }
 
     //get schedule
@@ -83,15 +122,18 @@ export default {
     //get test history
   },
   mounted() {
-    eventbus.$on("exam_started", () => {
+    eventbus.$on('exam_started', () => {
       this.collapsed = true;
       this.examStarted = true;
     });
-    eventbus.$on("exam_ended", () => {
+    eventbus.$on('exam_ended', () => {
       this.collapsed = false;
       this.examStarted = false;
     });
-  }
+    eventbus.$on('close-drawer', () => {
+      this.onClose();
+    });
+  },
 };
 </script>
 
@@ -142,5 +184,8 @@ export default {
 }
 .bg-4 {
   background-color: rgb(29, 41, 57) !important;
+}
+drawer-link {
+  color: #000000;
 }
 </style>

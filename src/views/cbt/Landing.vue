@@ -21,7 +21,12 @@
                   v-model="exam.subject"
                   :items="Object.values(subjects)"
                 />
-                <v-text-field solo append-icon="watch" label="Duration" v-model="exam.duration" />
+                <v-text-field
+                  solo
+                  append-icon="watch"
+                  label="Duration"
+                  v-model="exam.duration"
+                />
                 <v-btn color="blue" @click="proceed">Proceed</v-btn>
               </v-form>
             </v-card-text>
