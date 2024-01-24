@@ -1,0 +1,8 @@
+version: '3.1'
+services:
+  student:
+    container_name: demo-student
+    image: lordrahl/quest-student
+    # build: .
+    ports:
+      - '8084:80'

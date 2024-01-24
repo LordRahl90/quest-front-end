@@ -1,7 +1,7 @@
 build:
-	docker build -t lordrahl/quest-front-end:latest .
+	docker build -t lordrahl/quest-student:latest .
 
 push:
-	docker push lordrahl/quest-front-end:latest
+	docker push lordrahl/quest-student:latest
 
 ci: build push
