@@ -9,15 +9,6 @@ jobs:
       - name: 'Checkout Github action'
         uses: actions/checkout@master
 
-      - name: 'Setup Node'
-        uses: actions/setup-node@master
-
-      - name: 'Install NPM'
-        run: npm install
-
-      - name: 'Build the static files'
-        run: npm run build
-
       - name: 'Generate the docker image from the static files'
         uses: docker/build-push-action@v1
         with:
